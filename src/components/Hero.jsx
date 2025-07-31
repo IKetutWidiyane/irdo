@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section id="home" className="pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-r from-irdo-blue to-irdo-purple text-white">
+    <section id="home" className="pt-24 pb-12 md:pt-32 md:pb-20 bg-gradient-to-r from-irdo-blue to-irdo-purple dark:from-gray-900 dark:to-gray-800 text-white transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="md:flex md:items-center md:justify-between">
           <div className="md:w-1/2 mb-8 md:mb-0">

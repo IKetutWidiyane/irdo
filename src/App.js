@@ -11,15 +11,17 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="font-sans">
+    <div className="font-sans bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-200">
       <Navbar />
-      <Hero />
-      <About />
-      <Competition />
-      <Speakers />
-      <Schedule />
-      <Register />
-      <Sponsors />
+      <main className="pt-16">
+        <Hero />
+        <About />
+        <Competition />
+        <Speakers />
+        <Schedule />
+        <Register />
+        <Sponsors />
+      </main>
       <Footer />
     </div>
   );

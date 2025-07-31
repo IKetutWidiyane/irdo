@@ -32,32 +32,32 @@ const Schedule = () => {
   ];
 
   return (
-    <section id="schedule" className="py-16 bg-gray-50">
+    <section id="schedule" className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Event Schedule</h2>
-          <div className="w-20 h-1 bg-irdo-blue mx-auto"></div>
-          <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Event Schedule</h2>
+          <div className="w-20 h-1 bg-irdo-blue dark:bg-irdo-purple mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Three days of competition, learning, and networking with robotics enthusiasts from around the world.
           </p>
         </div>
 
         <div className="space-y-12">
           {days.map((day, dayIndex) => (
-            <div key={dayIndex} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="bg-irdo-blue text-white px-6 py-4">
+            <div key={dayIndex} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-200">
+              <div className="bg-irdo-blue dark:bg-irdo-purple text-white px-6 py-4">
                 <h3 className="text-xl font-semibold">{day.date}</h3>
               </div>
-              <div className="divide-y divide-gray-200">
+              <div className="divide-y divide-gray-200 dark:divide-gray-700">
                 {day.events.map((event, eventIndex) => (
-                  <div key={eventIndex} className="p-6 hover:bg-gray-50 transition duration-150">
+                  <div key={eventIndex} className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150">
                     <div className="md:flex md:items-center md:justify-between">
                       <div className="md:w-1/4 mb-2 md:mb-0">
-                        <span className="text-irdo-blue font-medium">{event.time}</span>
+                        <span className="text-irdo-blue dark:text-irdo-purple font-medium">{event.time}</span>
                       </div>
                       <div className="md:w-3/4">
-                        <h4 className="text-lg font-semibold text-gray-800">{event.title}</h4>
-                        <p className="text-gray-600 mt-1">{event.description}</p>
+                        <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">{event.title}</h4>
+                        <p className="text-gray-600 dark:text-gray-300 mt-1">{event.description}</p>
                       </div>
                     </div>
                   </div>

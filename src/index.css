@@ -2,16 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  body {
+    @apply transition-colors duration-200;
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom selection color */
+  ::selection {
+    @apply bg-irdo-blue text-white dark:bg-irdo-purple;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+
+  /* Custom button styles */
+  .btn-primary {
+    @apply bg-irdo-blue dark:bg-irdo-purple text-white font-bold py-2 px-6 rounded hover:bg-irdo-purple dark:hover:bg-irdo-blue transition duration-200;
+  }
+
+  .btn-outline {
+    @apply border-2 border-irdo-blue dark:border-irdo-purple text-irdo-blue dark:text-irdo-purple font-bold py-2 px-6 rounded hover:bg-irdo-blue dark:hover:bg-irdo-purple hover:text-white transition duration-200;
+  }
 }
