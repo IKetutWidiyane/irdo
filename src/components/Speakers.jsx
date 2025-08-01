@@ -3,7 +3,7 @@ import React from 'react';
 const Speakers = () => {
   const speakers = [
     {
-      name: "Dr. Elena Rodriguez",
+      name: "Dr. Kepin",
       title: "Robotics Professor at MIT",
       expertise: "Autonomous Systems",
       image: "https://via.placeholder.com/150?text=Dr.Elena",
@@ -11,7 +11,7 @@ const Speakers = () => {
       linkedin: "https://linkedin.com/in/elena-mit"
     },
     {
-      name: "Prof. James Tanaka",
+      name: "Prof. Kevin Tanaka",
       title: "AI Research Lead at Google",
       expertise: "Machine Learning in Robotics",
       image: "https://via.placeholder.com/150?text=Prof.James",
