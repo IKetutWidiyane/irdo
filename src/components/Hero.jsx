@@ -20,7 +20,7 @@ const Hero = () => {
       }}
     >
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 dark:hidden"
         style={{
           backgroundImage: beforePattern,
           opacity: 0.5,
@@ -28,7 +28,7 @@ const Hero = () => {
         }}
       />
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 dark:hidden"
         style={{
           backgroundImage: afterPattern,
           backgroundSize: '40px 40px',
@@ -37,34 +37,51 @@ const Hero = () => {
         }}
       />
 
+      {/* Dark mode overlay */}
+      <div
+        className="absolute inset-0 z-0 hidden dark:block"
+        style={{
+          backgroundColor: '#0f172a',
+          backgroundImage: `
+            radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 1px, transparent 0),
+            linear-gradient(rgba(255,255,255,0.01) 1px, transparent 0),
+            linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 0)
+          `,
+          backgroundSize: '20px 20px, 10px 10px, 10px 10px',
+          backgroundRepeat: 'repeat',
+        }}
+      />
+
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="md:flex md:items-center md:justify-between">
           <div className="md:w-1/2 mb-6 md:mb-0">
             <motion.h1
-              className="text-3xl md:text-4xl font-bold mb-3"
+              className="text-4xl md:text-6xl font-bold mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               International Robot Design Olympiad
             </motion.h1>
+
             <motion.p
-              className="text-lg mb-6"
+              className="text-xl md:text-2xl mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               Where Innovation Meets Technology
             </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <button className="bg-white text-blue-600 font-semibold py-2 px-6 rounded-full hover:bg-gray-100 transition duration-300 mr-2 text-sm">
+              <button className="bg-white text-blue-600 font-semibold py-2 px-6 rounded-full hover:bg-gray-100 transition duration-300 mr-2 text-base dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700">
                 Register
               </button>
-              <button className="border border-white text-white font-semibold py-2 px-6 rounded-full hover:bg-white hover:text-blue-600 transition duration-300 text-sm">
+              <button className="border border-white text-white font-semibold py-2 px-6 rounded-full hover:bg-white hover:text-blue-600 transition duration-300 text-base dark:border-blue-400 dark:hover:bg-blue-400 dark:hover:text-blue-900">
                 Learn More
               </button>
             </motion.div>
