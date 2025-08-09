@@ -3,24 +3,14 @@ import React from 'react';
 const Competition = () => {
   const categories = [
     {
-      name: "Autonomous Robotics",
-      description: "Design robots that can operate independently in complex environments.",
+      name: "Creative Robot",
+      description: "Design and build innovative robots with unique functionalities and creative designs.",
       icon: "🤖"
     },
     {
-      name: "Humanoid Robotics",
-      description: "Create robots that mimic human movements and interactions.",
-      icon: "🚶"
-    },
-    {
-      name: "AI Innovation",
-      description: "Develop cutting-edge AI solutions for robotic applications.",
-      icon: "🧠"
-    },
-    {
-      name: "Junior Division",
-      description: "For participants under 18 years old with simplified challenges.",
-      icon: "👦"
+      name: "Capstone Project",
+      description: "Showcase your final-year or major project integrating robotics and technology solutions.",
+      icon: "📚"
     }
   ];
 
@@ -42,7 +32,7 @@ const Competition = () => {
 
         <div className="mb-16">
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6 text-center">Competition Categories</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {categories.map((category, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg dark:hover:shadow-gray-700 transition duration-300">
                 <div className="text-4xl mb-4">{category.icon}</div>
