@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# IRDO - International Robot Design Olympiad
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Landing page for the International Robot Design Olympiad, built with React + Tailwind CSS + Framer Motion.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### ✨ Text Scramble (Binary)
+- Animated headline using only binary characters (`0` and `1`) that scramble before resolving to the actual text
+- Smooth progressive character resolution from left to right
+- Click the headline to rescramble the animation
+- Subtle 3D perspective tilt effect on hover (follows mouse position)
 
-### `npm start`
+### 🖱️ Cursor Trail
+- Small geometric shapes (circle, square, diamond, triangle) follow the cursor
+- Particles have gravity, friction, rotation, and fade out naturally
+- Rendered via Canvas API for high performance
+- Indigo/irdo color palette
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🌐 Background Mesh Pattern
+- SVG-based wireframe/net pattern with grid lines and intersection dots
+- Three layers: small grid (80px), large grid (160px), diagonal cross (120px)
+- Adaptive opacity for light/dark mode
+- Applied consistently across all sections
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🎨 Design System (Tailwind CSS)
+- Custom `irdo` color palette (indigo scale) as primary accent
+- Surface colors: `#ffffff` light / `#0a0a0f` dark (not pure black)
+- Custom utility classes defined in `index.css`:
+  - `section-container`, `section-padding`
+  - `card`, `card-hover`
+  - `btn-primary`, `btn-secondary`
+  - `input-field`
+  - `section-label`, `section-title`, `section-desc`
+  - `gradient-text`
 
-### `npm test`
+### 📱 Sections
+| Section | Description |
+|---------|-------------|
+| **Hero** | Binary scramble headline, badge, CTAs, stats (500+ participants, 30+ countries, 50+ speakers, $50K prize) |
+| **About** | Mission/Vision cards + 4 feature cards (Global Reach, Expert Judging, Multiple Categories, Networking) |
+| **Competition** | 4 categories (Creative Robot, Capstone Project, Autonomous Systems, AI Innovation) + alternating timeline + requirements |
+| **Speakers** | 4 expert cards with gradient avatar initials |
+| **Schedule** | 3-day card layout with gradient headers |
+| **Register** | Registration form with validation |
+| **Sponsors** | Tiered layout (Platinum/Gold/Silver) + Academic Partners |
+| **Footer** | Dark theme with social icons, quick links, contact info |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🌗 Dark/Light Mode
+- Full dark/light mode support with theme toggle
+- Dark mode uses deep charcoal (`#0a0a0f`) instead of pure black
+- All sections adapt colors, patterns, and glows per mode
+- Persists user preference
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React 19** with Hooks
+- **Tailwind CSS 3** for styling
+- **Framer Motion** for animations
+- **Canvas API** for cursor trail
+- **SVG Patterns** for background mesh
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Quick Start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Start development server
+npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Build for production
+npm run build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Open [http://localhost:3000](http://localhost:3000) to view in browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+├── App.js                    # Root component
+├── index.css                 # Tailwind + custom utility classes
+├── tailwind.config.js        # Theme configuration
+├── hooks/
+│   └── useScrambleText.js    # Hook for binary text scrambling animation
+└── components/
+    ├── Navbar.jsx            # Navigation with backdrop blur
+    ├── Hero.jsx              # Hero section with scramble headline
+    ├── About.jsx             # About section
+    ├── Competition.jsx       # Competition details + timeline
+    ├── Speakers.jsx          # Speaker cards
+    ├── Schedule.jsx          # Event schedule
+    ├── Register.jsx          # Registration form
+    ├── Sponsors.jsx          # Sponsors & partners
+    ├── Footer.jsx            # Site footer
+    ├── ScrambleText.jsx      # Reusable scramble text component
+    ├── CursorTrail.jsx       # Cursor trail particles
+    ├── BackgroundPattern.jsx # SVG mesh/net background
+    └── ThemeToggle.jsx       # Dark/light mode toggle
+```
 
-## Learn More
+## Design Reference
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Design follows principles inspired by Linear, Vercel, Stripe, and GitHub — prioritizing clarity, whitespace, hierarchy, and consistency.
