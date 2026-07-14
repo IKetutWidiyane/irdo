@@ -8,10 +8,12 @@ import Schedule from './components/Schedule';
 import Register from './components/Register';
 import Sponsors from './components/Sponsors';
 import Footer from './components/Footer';
+import CursorTrail from './components/CursorTrail';
 
 function App() {
   return (
-    <div className="font-sans bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-200">
+    <div className="min-h-screen">
+      <CursorTrail />
       <Navbar />
       <main className="pt-16">
         <Hero />

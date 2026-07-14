@@ -1,84 +1,112 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import BackgroundPattern from './BackgroundPattern';
+
+const tiers = [
+  {
+    name: 'Platinum',
+    sponsors: ['TechGiant', 'RobotWorld'],
+    size: 'h-16',
+  },
+  {
+    name: 'Gold',
+    sponsors: ['FutureTech', 'InnovateAI', 'SmartSystems'],
+    size: 'h-14',
+  },
+  {
+    name: 'Silver',
+    sponsors: ['EduRobotics', 'AutoMech', 'CodeFuture'],
+    size: 'h-12',
+  },
+];
+
+const partners = ['MIT Robotics Lab', 'Stanford AI', 'ETH Zurich', 'Tokyo Tech'];
 
 const Sponsors = () => {
-  const sponsors = [
-    { name: "TechGiant", logo: "https://via.placeholder.com/150x80?text=TechGiant", tier: "platinum" },
-    { name: "RobotWorld", logo: "https://via.placeholder.com/150x80?text=RobotWorld", tier: "platinum" },
-    { name: "FutureTech", logo: "https://via.placeholder.com/150x80?text=FutureTech", tier: "gold" },
-    { name: "InnovateAI", logo: "https://via.placeholder.com/150x80?text=InnovateAI", tier: "gold" },
-    { name: "SmartSystems", logo: "https://via.placeholder.com/150x80?text=SmartSystems", tier: "gold" },
-    { name: "EduRobotics", logo: "https://via.placeholder.com/150x80?text=EduRobotics", tier: "silver" },
-    { name: "AutoMech", logo: "https://via.placeholder.com/150x80?text=AutoMech", tier: "silver" },
-    { name: "CodeFuture", logo: "https://via.placeholder.com/150x80?text=CodeFuture", tier: "silver" },
-  ];
-
-  const partners = [
-    { name: "MIT Robotics Lab", logo: "https://via.placeholder.com/120x60?text=MIT" },
-    { name: "Stanford AI", logo: "https://via.placeholder.com/120x60?text=Stanford" },
-    { name: "ETH Zurich", logo: "https://via.placeholder.com/120x60?text=ETH" },
-    { name: "Tokyo Tech", logo: "https://via.placeholder.com/120x60?text=TokyoTech" },
-  ];
-
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Sponsors & Partners</h2>
-          <div className="w-20 h-1 bg-irdo-blue dark:bg-irdo-purple mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+    <section className="section-padding bg-surface-card dark:bg-surface-dark/50 relative overflow-hidden">
+      <BackgroundPattern />
+      <div className="section-container relative z-10">
+        <div className="text-center mb-16">
+          <div className="section-label mx-auto">Sponsors</div>
+          <h2 className="section-title mb-4">Our Sponsors & Partners</h2>
+          <p className="section-desc mx-auto">
             We're proud to collaborate with leading organizations in technology and education.
           </p>
         </div>
 
-        <div className="mb-16">
-          <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-8">Platinum Sponsors</h3>
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
-            {sponsors.filter(s => s.tier === 'platinum').map((sponsor, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md dark:hover:shadow-gray-700 transition duration-300">
-                <img src={sponsor.logo} alt={sponsor.name} className="h-16 object-contain" loading="lazy" />
+        <div className="space-y-16 mb-20">
+          {tiers.map((tier, i) => (
+            <motion.div
+              key={tier.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
+              <h3 className="text-sm font-semibold text-slate-400 dark:text-slate-500 text-center uppercase tracking-wider mb-8">
+                {tier.name} Sponsors
+              </h3>
+              <div className="flex flex-wrap justify-center gap-6">
+                {tier.sponsors.map((name) => (
+                  <div
+                    key={name}
+                    className="card-hover px-8 py-6 flex items-center justify-center min-w-[160px]"
+                  >
+                    <span className="text-lg font-bold text-slate-400 dark:text-slate-600">
+                      {name}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-8">Gold Sponsors</h3>
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
-            {sponsors.filter(s => s.tier === 'gold').map((sponsor, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md dark:hover:shadow-gray-700 transition duration-300">
-                <img src={sponsor.logo} alt={sponsor.name} className="h-14 object-contain" loading="lazy" />
-              </div>
-            ))}
-          </div>
-
-          <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-8">Silver Sponsors</h3>
-          <div className="flex flex-wrap justify-center gap-8">
-            {sponsors.filter(s => s.tier === 'silver').map((sponsor, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md dark:hover:shadow-gray-700 transition duration-300">
-                <img src={sponsor.logo} alt={sponsor.name} className="h-12 object-contain" loading="lazy" />
-              </div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
 
-        <div>
-          <h3 className="text-xl font-semibold text-center text-gray-800 dark:text-gray-200 mb-8">Academic Partners</h3>
-          <div className="flex flex-wrap justify-center gap-8">
-            {partners.map((partner, index) => (
-              <div key={index} className="flex items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md dark:hover:shadow-gray-700 transition duration-300">
-                <img src={partner.logo} alt={partner.name} className="h-10 object-contain" loading="lazy" />
+        {/* Academic Partners */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
+          <h3 className="text-sm font-semibold text-slate-400 dark:text-slate-500 text-center uppercase tracking-wider mb-8">
+            Academic Partners
+          </h3>
+          <div className="flex flex-wrap justify-center gap-6">
+            {partners.map((name) => (
+              <div
+                key={name}
+                className="card-hover px-6 py-4 flex items-center justify-center"
+              >
+                <span className="text-sm font-semibold text-slate-400 dark:text-slate-600">
+                  {name}
+                </span>
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 text-center">
-          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Interested in becoming a sponsor?</h3>
-          <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            Join our prestigious list of sponsors and gain visibility among the brightest minds in robotics and technology.
+        {/* CTA */}
+        <motion.div
+          className="mt-20 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+            Become a Sponsor
+          </h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 max-w-xl mx-auto">
+            Join our prestigious list of sponsors and gain visibility among the brightest minds
+            in robotics and technology.
           </p>
-          <a href="/sponsorship-package.pdf" download className="inline-block bg-irdo-blue dark:bg-irdo-purple text-white font-bold py-3 px-8 rounded-full hover:bg-irdo-purple dark:hover:bg-irdo-blue transition duration-300">
+          <a href="/sponsorship-package.pdf" download className="btn-primary">
             Download Sponsorship Package
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

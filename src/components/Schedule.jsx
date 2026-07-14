@@ -1,69 +1,92 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import BackgroundPattern from './BackgroundPattern';
+
+const days = [
+  {
+    date: 'February 15, 2027',
+    day: 'Day 1',
+    events: [
+      { time: '08:00', title: 'Registration', desc: 'Team check-in and materials distribution' },
+      { time: '09:00', title: 'Opening Ceremony', desc: 'Welcome speeches and competition overview' },
+      { time: '10:30', title: 'Preliminary Rounds', desc: 'First round of competition judging' },
+      { time: '12:00', title: 'Networking Lunch', desc: 'Exhibition viewing and connections' },
+      { time: '13:30', title: 'Technical Workshops', desc: 'Parallel sessions on robotics topics' },
+    ],
+  },
+  {
+    date: 'February 16, 2027',
+    day: 'Day 2',
+    events: [
+      { time: '09:00', title: 'Main Competition', desc: 'Teams present solutions to judges' },
+      { time: '12:00', title: 'Keynote Lunch', desc: 'Special address from industry leaders' },
+      { time: '13:30', title: 'Final Demonstrations', desc: 'Top teams compete in finale' },
+      { time: '16:00', title: 'Panel Discussion', desc: 'Future of Robotics with experts' },
+    ],
+  },
+  {
+    date: 'February 17, 2027',
+    day: 'Day 3',
+    events: [
+      { time: '10:00', title: 'Award Ceremony', desc: 'Winners announced and prizes awarded' },
+      { time: '11:30', title: 'Closing Reception', desc: 'Celebration and networking' },
+      { time: '13:00', title: 'Public Exhibition', desc: 'Open showcase of all entries' },
+    ],
+  },
+];
 
 const Schedule = () => {
-  const days = [
-    {
-      date: "February 15, 2024",
-      events: [
-        { time: "08:00 - 09:00", title: "Registration", description: "Team check-in and materials distribution" },
-        { time: "09:00 - 10:30", title: "Opening Ceremony", description: "Welcome speeches and competition overview" },
-        { time: "10:30 - 12:00", title: "Preliminary Rounds", description: "First round of competition judging" },
-        { time: "12:00 - 13:30", title: "Lunch Break", description: "Networking and exhibition viewing" },
-        { time: "13:30 - 17:00", title: "Workshops", description: "Parallel technical workshops on robotics topics" },
-      ]
-    },
-    {
-      date: "February 16, 2024",
-      events: [
-        { time: "09:00 - 12:00", title: "Main Competition", description: "Teams present their solutions to judges" },
-        { time: "12:00 - 13:30", title: "Lunch Break", description: "Keynote speaker during lunch" },
-        { time: "13:30 - 16:00", title: "Final Demonstrations", description: "Final round for top teams" },
-        { time: "16:00 - 17:30", title: "Panel Discussion", description: "Future of Robotics with industry leaders" },
-      ]
-    },
-    {
-      date: "February 17, 2024",
-      events: [
-        { time: "10:00 - 11:30", title: "Award Ceremony", description: "Announcement of winners and prize distribution" },
-        { time: "11:30 - 13:00", title: "Closing Lunch", description: "Celebration and networking" },
-        { time: "13:00 - 16:00", title: "Public Exhibition", description: "Open showcase of competition entries" },
-      ]
-    }
-  ];
-
   return (
-    <section id="schedule" className="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Event Schedule</h2>
-          <div className="w-20 h-1 bg-irdo-blue dark:bg-irdo-purple mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Three days of competition, learning, and networking with robotics enthusiasts from around the world.
+    <section id="schedule" className="section-padding bg-surface-card dark:bg-surface-dark/50 relative overflow-hidden">
+      <BackgroundPattern />
+      <div className="section-container relative z-10">
+        <div className="text-center mb-16">
+          <div className="section-label mx-auto">Schedule</div>
+          <h2 className="section-title mb-4">Event Schedule</h2>
+          <p className="section-desc mx-auto">
+            Three days of competition, learning, and networking with robotics enthusiasts worldwide.
           </p>
         </div>
 
-        <div className="space-y-12">
-          {days.map((day, dayIndex) => (
-            <div key={dayIndex} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-colors duration-200">
-              <div className="bg-irdo-blue dark:bg-irdo-purple text-white px-6 py-4">
-                <h3 className="text-xl font-semibold">{day.date}</h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          {days.map((day, i) => (
+            <motion.div
+              key={day.date}
+              className="card overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+            >
+              {/* Day header */}
+              <div className="bg-gradient-to-r from-irdo-600 to-irdo-700 px-6 py-4">
+                <span className="text-xs font-medium text-irdo-200">{day.day}</span>
+                <h3 className="text-base font-semibold text-white mt-0.5">{day.date}</h3>
               </div>
-              <div className="divide-y divide-gray-200 dark:divide-gray-700">
-                {day.events.map((event, eventIndex) => (
-                  <div key={eventIndex} className="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150">
-                    <div className="md:flex md:items-center md:justify-between">
-                      <div className="md:w-1/4 mb-2 md:mb-0">
-                        <span className="text-irdo-blue dark:text-irdo-purple font-medium">{event.time}</span>
+
+              {/* Events */}
+              <div className="divide-y divide-slate-100 dark:divide-slate-800">
+                {day.events.map((event, j) => (
+                  <div key={j} className="p-5 hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors duration-150">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-14 text-right">
+                        <span className="text-xs font-mono font-medium text-irdo-600 dark:text-irdo-400">
+                          {event.time}
+                        </span>
                       </div>
-                      <div className="md:w-3/4">
-                        <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200">{event.title}</h4>
-                        <p className="text-gray-600 dark:text-gray-300 mt-1">{event.description}</p>
+                      <div className="min-w-0">
+                        <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
+                          {event.title}
+                        </h4>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                          {event.desc}
+                        </p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
